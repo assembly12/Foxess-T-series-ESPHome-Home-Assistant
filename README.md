@@ -2,9 +2,9 @@
 Read out Foxess T-Series Inverter to Home Assistant by using ESPHome
 
 Instructions:
-Copy the YAML and the .h files to your ESPHome directory in Home Assistant
-Fill out individual data in the YAML file (SSID, password, manual ip, etc.)
-Optionally comment sensors you don't need or uncomment sensors you do need
+- Copy the YAML and the .h files to your ESPHome directory in Home Assistant
+- Fill out individual data in the YAML file (SSID, password, manual ip, etc.)
+- Optionally comment sensors you don't need or uncomment sensors you do need
 
 The hardware setup including a wiring diagramm can be found in the Wiki
 
