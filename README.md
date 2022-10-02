@@ -9,7 +9,7 @@ Instructions:
 - Fill out individual data in the YAML file (SSID, password, manual ip, etc.)
 - Optionally comment sensors you don't need or uncomment sensors you do need
 
-The hardware setup including a wiring diagramm can be found in the Wiki.
+The hardware setup including a wiring diagramm can be found in the [Wiki](https://github.com/assembly12/Foxess-T-series-ESPHome-Home-Assistant/wiki/Hardware-setup).
 Designing a custom pcb and enclosure is next on my to do list. I'll update here with the corresponding gerber and stl files when done. It should making the circuit a lot easier.
 
 There is some more info being send (like error messages and so on), however this is really not to usefull so I left it out of this component.
