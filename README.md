@@ -15,7 +15,7 @@ Instructions:
 
 The hardware setup including a wiring diagramm can be found in the [Wiki](https://github.com/assembly12/Foxess-T-series-ESPHome-Home-Assistant/wiki/Hardware-setup).
 
-Designing a custom pcb and enclosure is next on my to do list. I'll update here with the corresponding gerber and stl files when done. It should making the circuit a lot easier.
+Designing a custom pcb and enclosure is next on my to do list. I'll update here with the corresponding gerber and stl files when done.
 
 There is some more info being send (like error messages and so on), however this is really not to usefull so I left it out of this component.
 
