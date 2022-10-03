@@ -1,6 +1,10 @@
 # Foxess-T-series-ESPHome-Home-Assistant
 Read out Foxess T-Series Inverter to Home Assistant by using ESPHome
 
+Compatibale with:
+- Foxess T-series
+- Possibly Foxess F-series and S-series as well (not tested!)
+
 ![Screenshot 2022-10-02 153019](https://user-images.githubusercontent.com/106449034/193456801-99b3201c-d321-4a15-a520-aaa8ef501432.jpg)
 ![Screenshot 2022-10-02 153051](https://user-images.githubusercontent.com/106449034/193456806-b54805a2-b9ea-435d-a3b7-6fe42b514c9a.jpg)
 
