@@ -46,6 +46,11 @@ button:
   - platform: restart
     name: "Foxess inverter restart"
     
+switch:
+  - platform: gpio
+    pin: 4
+    name: "T-Series sending mode" #if "on" reading from inverter doesn't work!
+    
 sensor:
 - platform: template
   name: "T-Series PV1 Power" #rs485 comm says this is always 0W, so has to be calculated by voltage*current
