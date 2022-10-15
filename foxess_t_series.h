@@ -58,6 +58,7 @@ class foxesscomponent : public PollingComponent, public Sensor, public UARTDevic
 
   //void loop() override {
   void update() {
+    int total_message_length = 0;
     while(available() > 0) {
       bytes.push_back(read());
       //ESP_LOGD("custom", "reading bytes");
@@ -75,8 +76,18 @@ class foxesscomponent : public PollingComponent, public Sensor, public UARTDevic
       else {
       }
 
-      if(bytes.size() == 165) { //>=
-        if(bytes[164] != 0xE7 || bytes[163] != 0xE7) {
+      if(bytes.size() == 9) { //>=
+        TwoByte message_length;
+        message_length.Byte[0] = bytes[8];
+        message_length.Byte[1] = bytes[7];
+        total_message_length = message_length.UInt16 + 13;
+        ESP_LOGI("custom", "User data length: %i", message_length.UInt16);
+        ESP_LOGI("custom", "Total message length: %i", total_message_length);
+        //continue;
+        }
+
+      if(bytes.size() == total_message_length) { //>=
+        if(bytes[total_message_length-1] != 0xE7 || bytes[total_message_length-2] != 0xE7) {
           bytes.clear();
           ESP_LOGD("custom", "error in reading message");
           continue;
