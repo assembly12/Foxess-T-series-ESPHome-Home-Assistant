@@ -50,49 +50,47 @@ switch:
   - platform: gpio
     pin: 4
     name: "T-Series sending mode" #if "on" reading from inverter doesn't work!
+    internal: true #switch is not exposed to HA frontend, should you ever need to write to the inverter, just comment this line
     
 sensor:
-- platform: template
-  name: "T-Series PV1 Power" #rs485 comm says this is always 0W, so has to be calculated by voltage*current
-  id: "pv1_power"
-  unit_of_measurement: W
-  icon: mdi:lightning-bolt
-  lambda: |-
-    return id(pv1_voltage).state * id(pv1_current).state;
-  update_interval: 5s
-    
-- platform: template
-  name: "T-Series PV2 Power" #rs485 comm says this is always 0W, so has to be calculated by voltage*current
-  id: "pv2_power"
-  unit_of_measurement: W
-  icon: mdi:lightning-bolt
-  lambda: |-
-    return id(pv2_voltage).state * id(pv2_current).state;
-  update_interval: 5s
-    
-- platform: template #only relevant for models T8dual-T12dual and T15-T25
-  name: "T-Series PV3 Power" #rs485 comm says this is always 0W, so has to be calculated by voltage*current
-  id: "pv3_power"
-  unit_of_measurement: W
-  icon: mdi:lightning-bolt
-  lambda: |-
-    return id(pv3_voltage).state * id(pv3_current).state;
-  update_interval: 5s
-    
-- platform: template #only relevant for models T8dual-T12dual and T15-T25
-  name: "T-Series PV4 Power" #rs485 comm says this is always 0W, so has to be calculated by voltage*current
-  id: "pv4_power"
-  unit_of_measurement: W
-  icon: mdi:lightning-bolt
-  lambda: |-
-    return id(pv4_voltage).state * id(pv4_current).state;
-  update_interval: 5s
-
 - platform: custom
   lambda: |-
     auto foxesssensors = new foxesscomponent(id(uart_bus));
     App.register_component(foxesssensors);
-    return {foxesssensors->grid_power, foxesssensors->generation_power, foxesssensors->loads_power, foxesssensors->grid_voltage_r, foxesssensors->grid_current_r, foxesssensors->grid_frequency_r, foxesssensors->grid_power_r, foxesssensors->grid_voltage_s, foxesssensors->grid_current_s, foxesssensors->grid_frequency_s, foxesssensors->grid_power_s, foxesssensors->grid_voltage_T, foxesssensors->grid_current_T, foxesssensors->grid_frequency_T, foxesssensors->grid_power_T, foxesssensors->pv1_voltage, foxesssensors->pv1_current, foxesssensors->pv2_voltage, foxesssensors->pv2_current, foxesssensors->pv3_voltage, foxesssensors->pv3_current, foxesssensors->pv4_voltage, foxesssensors->pv4_current, foxesssensors->boost_temperature, foxesssensors->inverter_temperature, foxesssensors->ambient_temperature, foxesssensors->today_yield, foxesssensors->generation_total};
+    return {\
+    foxesssensors->grid_power, \
+    foxesssensors->generation_power, \
+    foxesssensors->loads_power, \
+    foxesssensors->grid_voltage_r, \
+    foxesssensors->grid_current_r, \
+    foxesssensors->grid_frequency_r, \
+    foxesssensors->grid_power_r, \
+    foxesssensors->grid_voltage_s, \
+    foxesssensors->grid_current_s, \
+    foxesssensors->grid_frequency_s, \
+    foxesssensors->grid_power_s, \
+    foxesssensors->grid_voltage_T, \
+    foxesssensors->grid_current_T, \
+    foxesssensors->grid_frequency_T, \
+    foxesssensors->grid_power_T, \
+    foxesssensors->pv1_voltage, \
+    foxesssensors->pv1_current, \
+    foxesssensors->pv2_voltage, \
+    foxesssensors->pv2_current, \
+    foxesssensors->pv3_voltage, \
+    foxesssensors->pv3_current, \
+    foxesssensors->pv4_voltage, \
+    foxesssensors->pv4_current, \
+    foxesssensors->boost_temperature, \
+    foxesssensors->inverter_temperature, \
+    foxesssensors->ambient_temperature, \
+    foxesssensors->today_yield, \
+    foxesssensors->generation_total, \
+    foxesssensors->pv1_power, \
+    foxesssensors->pv2_power, \
+    foxesssensors->pv3_power, \
+    foxesssensors->pv4_power\
+    };
 
   sensors:
   - name: "T-Series Grid Power"
@@ -299,9 +297,33 @@ sensor:
   - name: "T-Series Generation Total"
     id: "generation_total"
     unit_of_measurement: kWh
+    device_class: energy #for use in energy dashboard
+    state_class: total_increasing #for use in energy dashboard
     accuracy_decimals: 1
     icon: mdi:solar-power
-    device_class: energy
-    state_class: total_increasing
     filters:
     - multiply: 0.1
+    
+  - name: "T-Series PV1 Power" #rs485 comm says this is always 0W, so this is calculated in the .h file by voltage*current
+    id: "pv1_power"
+    unit_of_measurement: W
+    icon: mdi:lightning-bolt
+    accuracy_decimals: 1
+    
+  - name: "T-Series PV2 Power" #rs485 comm says this is always 0W, so this is calculated in the .h file by voltage*current
+    id: "pv2_power"
+    unit_of_measurement: W
+    icon: mdi:lightning-bolt
+    accuracy_decimals: 1
+    
+  - name: "T-Series PV3 Power" #rs485 comm says this is always 0W, so this is calculated in the .h file by voltage*current
+    id: "pv3_power"
+    unit_of_measurement: W
+    icon: mdi:lightning-bolt
+    accuracy_decimals: 1
+    
+  - name: "T-Series PV4 Power" #rs485 comm says this is always 0W, so this is calculated in the .h file by voltage*current
+    id: "pv4_power"
+    unit_of_measurement: W
+    icon: mdi:lightning-bolt
+    accuracy_decimals: 1
