@@ -10,18 +10,18 @@ esp32:
 
 # Enable logging
 logger:
-  #level: VERBOSE
-  #baud_rate: 0
+  level: VERBOSE
+  baud_rate: 0
 
 # Enable Home Assistant API
 api:
 
 ota:
-  password: "xxxxxxxxxxxxxxxxxxxxx"
+  password: "***********************"
 
 wifi:
-  ssid: "your_ssid"
-  password: "your_password"
+  ssid: "***************************"
+  password: "*********************"
   
 #  manual_ip:
 #    static_ip: xxx.xxx.xxx.xx
@@ -30,8 +30,8 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Foxess inverter Fallback Hotspot"
-    password: "xxxxxxxxxxxxxxxxxxx"
+    ssid: "Inverter Fallback Hotspot"
+    password: "*****************+"
 
 captive_portal:
 
@@ -52,6 +52,12 @@ switch:
     name: "T-Series sending mode" #if "on" reading from inverter doesn't work!
     internal: true #switch is not exposed to HA frontend, should you ever need to write to the inverter, just comment this line
     
+text_sensor:
+  - platform: template
+    name: "T-Series Inverter Mode"
+    id: "inverter_mode_text_sensor"
+    icon: mdi:solar-power-variant
+
 sensor:
 - platform: custom
   lambda: |-
@@ -89,7 +95,8 @@ sensor:
     foxesssensors->pv1_power, \
     foxesssensors->pv2_power, \
     foxesssensors->pv3_power, \
-    foxesssensors->pv4_power\
+    foxesssensors->pv4_power, \
+    foxesssensors->inverter_state\
     };
 
   sensors:
@@ -327,3 +334,22 @@ sensor:
     unit_of_measurement: W
     icon: mdi:lightning-bolt
     accuracy_decimals: 1
+    
+  - name: "T-Series Inverter State"
+    id: "inverter_state"
+    internal: true
+    on_value:
+      then:
+        - lambda: |-
+            if(x==0) {
+              id(inverter_mode_text_sensor).publish_state("Offline");
+            }
+            else if(x==1) {
+              id(inverter_mode_text_sensor).publish_state("Online");
+            }
+            else if(x==2) {
+              id(inverter_mode_text_sensor).publish_state("Error");
+            }
+            else {
+              id(inverter_mode_text_sensor).publish_state("Waiting for response...");
+            }
