@@ -49,6 +49,7 @@ class foxesscomponent : public PollingComponent, public Sensor, public UARTDevic
 
   void setup() override {
     id(inverter_state).publish_state(inverter_mode);
+    millis_lastmessage = millis();
   }
 
   std::vector<int> bytes;
@@ -56,8 +57,25 @@ class foxesscomponent : public PollingComponent, public Sensor, public UARTDevic
   //void loop() override {
   void update() {
     if(millis_lastmessage + inverter_timeout < millis()) {
-      inverter_mode = 0; //offline
-      id(inverter_state).publish_state(inverter_mode);
+      if(inverter_mode != 0){
+        inverter_mode = 0; //offline
+        id(inverter_state).publish_state(inverter_mode);
+        id(generation_power).publish_state(0);
+        id(grid_current_r).publish_state(0);
+        id(grid_power_r).publish_state(0);
+        id(grid_current_T).publish_state(0);
+        id(grid_power_T).publish_state(0);
+        id(grid_current_s).publish_state(0);
+        id(grid_power_s).publish_state(0);
+        id(pv1_current).publish_state(0);
+        id(pv1_power).publish_state(0);
+        id(pv2_current).publish_state(0);
+        id(pv2_power).publish_state(0);
+        id(pv3_current).publish_state(0);
+        id(pv3_power).publish_state(0);
+        id(pv4_current).publish_state(0);
+        id(pv4_power).publish_state(0);
+      }
     }
     while(available() > 0) {
       bytes.push_back(read());
