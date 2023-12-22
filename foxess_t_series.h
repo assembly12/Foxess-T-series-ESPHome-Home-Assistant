@@ -116,229 +116,235 @@ class foxesscomponent : public PollingComponent, public Sensor, public UARTDevic
         inverter_mode = 1;
 
         TwoByte grid_power_value;
-        grid_power_value.Byte[0] = bytes[10];
-        grid_power_value.Byte[1] = bytes[9];
+        grid_power_value.Byte[0] = bytes[176];
+        grid_power_value.Byte[1] = bytes[175];
         id(grid_power).publish_state(grid_power_value.UInt16);
         delay(50);
 
         TwoByte generation_power_value;
-        generation_power_value.Byte[0] = bytes[12];
-        generation_power_value.Byte[1] = bytes[11];
+        generation_power_value.Byte[0] = bytes[16];
+        generation_power_value.Byte[1] = bytes[15];
         id(generation_power).publish_state(generation_power_value.UInt16);
         delay(50);
 
         TwoByte loads_power_value;
-        loads_power_value.Byte[0] = bytes[14];
-        loads_power_value.Byte[1] = bytes[13];
+        loads_power_value.Byte[0] = bytes[20];
+        loads_power_value.Byte[1] = bytes[19];
         id(loads_power).publish_state(loads_power_value.UInt16);
         delay(50);
 
         TwoByte grid_voltage_r_value;
-        grid_voltage_r_value.Byte[0] = bytes[16];
-        grid_voltage_r_value.Byte[1] = bytes[15];
+        grid_voltage_r_value.Byte[0] = bytes[22];
+        grid_voltage_r_value.Byte[1] = bytes[21];
         id(grid_voltage_r).publish_state(grid_voltage_r_value.UInt16);
         delay(50);
 
         TwoByte grid_current_r_value;
-        grid_current_r_value.Byte[0] = bytes[18];
-        grid_current_r_value.Byte[1] = bytes[17];
+        grid_current_r_value.Byte[0] = bytes[24];
+        grid_current_r_value.Byte[1] = bytes[23];
         id(grid_current_r).publish_state(grid_current_r_value.UInt16);
         delay(50);
 
         TwoByte grid_frequency_r_value;
-        grid_frequency_r_value.Byte[0] = bytes[20];
-        grid_frequency_r_value.Byte[1] = bytes[19];
+        grid_frequency_r_value.Byte[0] = bytes[26];
+        grid_frequency_r_value.Byte[1] = bytes[25];
         id(grid_frequency_r).publish_state(grid_frequency_r_value.UInt16);
         delay(50);
 
         TwoByte grid_power_r_value;
-        grid_power_r_value.Byte[0] = bytes[22];
-        grid_power_r_value.Byte[1] = bytes[21];
+        grid_power_r_value.Byte[0] = bytes[28];
+        grid_power_r_value.Byte[1] = bytes[27];
         id(grid_power_r).publish_state(grid_power_r_value.UInt16);
         delay(50);
 
         TwoByte grid_voltage_s_value;
-        grid_voltage_s_value.Byte[0] = bytes[24];
-        grid_voltage_s_value.Byte[1] = bytes[23];
+        grid_voltage_s_value.Byte[0] = bytes[30];
+        grid_voltage_s_value.Byte[1] = bytes[29];
         id(grid_voltage_s).publish_state(grid_voltage_s_value.UInt16);
         delay(50);
 
         TwoByte grid_current_s_value;
-        grid_current_s_value.Byte[0] = bytes[26];
-        grid_current_s_value.Byte[1] = bytes[25];
+        grid_current_s_value.Byte[0] = bytes[32];
+        grid_current_s_value.Byte[1] = bytes[31];
         id(grid_current_s).publish_state(grid_current_s_value.UInt16);
         delay(50);
 
         TwoByte grid_frequency_s_value;
-        grid_frequency_s_value.Byte[0] = bytes[28];
-        grid_frequency_s_value.Byte[1] = bytes[27];
+        grid_frequency_s_value.Byte[0] = bytes[34];
+        grid_frequency_s_value.Byte[1] = bytes[33];
         id(grid_frequency_s).publish_state(grid_frequency_s_value.UInt16);
         delay(50);
 
         TwoByte grid_power_s_value;
-        grid_power_s_value.Byte[0] = bytes[30];
-        grid_power_s_value.Byte[1] = bytes[29];
+        grid_power_s_value.Byte[0] = bytes[36];
+        grid_power_s_value.Byte[1] = bytes[35];
         id(grid_power_s).publish_state(grid_power_s_value.UInt16);
         delay(50);
 
         TwoByte grid_voltage_T_value;
-        grid_voltage_T_value.Byte[0] = bytes[32];
-        grid_voltage_T_value.Byte[1] = bytes[31];
+        grid_voltage_T_value.Byte[0] = bytes[38];
+        grid_voltage_T_value.Byte[1] = bytes[37];
         id(grid_voltage_T).publish_state(grid_voltage_T_value.UInt16);
         delay(50);
 
         TwoByte grid_current_T_value;
-        grid_current_T_value.Byte[0] = bytes[34];
-        grid_current_T_value.Byte[1] = bytes[33];
+        grid_current_T_value.Byte[0] = bytes[40];
+        grid_current_T_value.Byte[1] = bytes[39];
         id(grid_current_T).publish_state(grid_current_T_value.UInt16);
         delay(50);
 
         TwoByte grid_frequency_T_value;
-        grid_frequency_T_value.Byte[0] = bytes[36];
-        grid_frequency_T_value.Byte[1] = bytes[35];
+        grid_frequency_T_value.Byte[0] = bytes[42];
+        grid_frequency_T_value.Byte[1] = bytes[41];
         id(grid_frequency_T).publish_state(grid_frequency_T_value.UInt16);
         delay(50);
 
         TwoByte grid_power_T_value;
-        grid_power_T_value.Byte[0] = bytes[38];
-        grid_power_T_value.Byte[1] = bytes[37];
+        grid_power_T_value.Byte[0] = bytes[44];
+        grid_power_T_value.Byte[1] = bytes[43];
         id(grid_power_T).publish_state(grid_power_T_value.UInt16);
         delay(50);
 
         TwoByte pv1_voltage_value;
-        pv1_voltage_value.Byte[0] = bytes[40];
-        pv1_voltage_value.Byte[1] = bytes[39];
+        pv1_voltage_value.Byte[0] = bytes[46];
+        pv1_voltage_value.Byte[1] = bytes[45];
         id(pv1_voltage).publish_state(pv1_voltage_value.UInt16);
+        //ESP_LOGI("custom", "pv1_voltage: %i", pv1_voltage_value.UInt16);
         delay(50);
 
         TwoByte pv1_current_value;
-        pv1_current_value.Byte[0] = bytes[42];
-        pv1_current_value.Byte[1] = bytes[41];
+        pv1_current_value.Byte[0] = bytes[48];
+        pv1_current_value.Byte[1] = bytes[47];
         id(pv1_current).publish_state(pv1_current_value.UInt16);
+        //ESP_LOGI("custom", "pv1_current: %i", pv1_current_value.UInt16);
         delay(50);
 
         TwoByte pv2_voltage_value;
-        pv2_voltage_value.Byte[0] = bytes[46];
-        pv2_voltage_value.Byte[1] = bytes[45];
+        pv2_voltage_value.Byte[0] = bytes[52];
+        pv2_voltage_value.Byte[1] = bytes[51];
         id(pv2_voltage).publish_state(pv2_voltage_value.UInt16);
+        //ESP_LOGI("custom", "pv2_voltage: %i", pv2_voltage_value.UInt16);
         delay(50);
 
         TwoByte pv2_current_value;
-        pv2_current_value.Byte[0] = bytes[48];
-        pv2_current_value.Byte[1] = bytes[47];
+        pv2_current_value.Byte[0] = bytes[54];
+        pv2_current_value.Byte[1] = bytes[53];
         id(pv2_current).publish_state(pv2_current_value.UInt16);
+        //ESP_LOGI("custom", "pv2_current: %i", pv2_current_value.UInt16);
         delay(50);
 
         TwoByte pv3_voltage_value;
-        pv3_voltage_value.Byte[0] = bytes[52];
-        pv3_voltage_value.Byte[1] = bytes[51];
+        pv3_voltage_value.Byte[0] = bytes[58];
+        pv3_voltage_value.Byte[1] = bytes[57];
         id(pv3_voltage).publish_state(pv3_voltage_value.UInt16);
         delay(50);
 
         TwoByte pv3_current_value;
-        pv3_current_value.Byte[0] = bytes[54];
-        pv3_current_value.Byte[1] = bytes[53];
+        pv3_current_value.Byte[0] = bytes[60];
+        pv3_current_value.Byte[1] = bytes[59];
         id(pv3_current).publish_state(pv3_current_value.UInt16);
         delay(50);
 
         TwoByte pv4_voltage_value;
-        pv4_voltage_value.Byte[0] = bytes[58];
-        pv4_voltage_value.Byte[1] = bytes[57];
+        pv4_voltage_value.Byte[0] = bytes[64];
+        pv4_voltage_value.Byte[1] = bytes[63];
         id(pv4_voltage).publish_state(pv4_voltage_value.UInt16);
         delay(50);
 
         TwoByte pv4_current_value;
-        pv4_current_value.Byte[0] = bytes[60];
-        pv4_current_value.Byte[1] = bytes[59];
+        pv4_current_value.Byte[0] = bytes[66];
+        pv4_current_value.Byte[1] = bytes[65];
         id(pv4_current).publish_state(pv4_current_value.UInt16);
         delay(50);
 
         TwoByte boost_temperature_value;
-        boost_temperature_value.Byte[0] = bytes[64];
-        boost_temperature_value.Byte[1] = bytes[63];
+        boost_temperature_value.Byte[0] = bytes[70];
+        boost_temperature_value.Byte[1] = bytes[69];
         id(boost_temperature).publish_state(boost_temperature_value.UInt16);
         delay(50);
 
         TwoByte inverter_temperature_value;
-        inverter_temperature_value.Byte[0] = bytes[66];
-        inverter_temperature_value.Byte[1] = bytes[65];
+        inverter_temperature_value.Byte[0] = bytes[72];
+        inverter_temperature_value.Byte[1] = bytes[71];
         id(inverter_temperature).publish_state(inverter_temperature_value.UInt16);
         delay(50);
 
         TwoByte ambient_temperature_value;
-        ambient_temperature_value.Byte[0] = bytes[68];
-        ambient_temperature_value.Byte[1] = bytes[67];
+        ambient_temperature_value.Byte[0] = bytes[74];
+        ambient_temperature_value.Byte[1] = bytes[73];
         id(ambient_temperature).publish_state(ambient_temperature_value.UInt16);
         delay(50);
 
         TwoByte today_yield_value;
-        today_yield_value.Byte[0] = bytes[70];
-        today_yield_value.Byte[1] = bytes[69];
+        today_yield_value.Byte[0] = bytes[76];
+        today_yield_value.Byte[1] = bytes[75];
         id(today_yield).publish_state(today_yield_value.UInt16);
+        //ESP_LOGI("custom", "today_yield: %i", today_yield_value.UInt16);
         delay(50);
 
         uint32_t generation_total_value = int(
-            (unsigned char)(bytes[71]) << 24 |
-            (unsigned char)(bytes[72]) << 16 |
-            (unsigned char)(bytes[73]) << 8 |
-            (unsigned char)(bytes[74]));
+            (unsigned char)(bytes[77]) << 24 |
+            (unsigned char)(bytes[78]) << 16 |
+            (unsigned char)(bytes[79]) << 8 |
+            (unsigned char)(bytes[80]));
         id(generation_total).publish_state(generation_total_value);
+        //ESP_LOGI("custom", "Generation total: %i", generation_total_value);
         delay(50);
 
         uint32_t FaultMessage1_value = int( 
-            (unsigned char)(bytes[125]) << 24 | 
-            (unsigned char)(bytes[126]) << 16 | 
-            (unsigned char)(bytes[127]) << 8 | 
-            (unsigned char)(bytes[128])); 
+            (unsigned char)(bytes[131]) << 24 | 
+            (unsigned char)(bytes[132]) << 16 | 
+            (unsigned char)(bytes[133]) << 8 | 
+            (unsigned char)(bytes[134])); 
             delay(50);
 
         uint32_t FaultMessage2_value = int( 
-            (unsigned char)(bytes[129]) << 24 | 
-            (unsigned char)(bytes[130]) << 16 | 
-            (unsigned char)(bytes[131]) << 8 | 
-            (unsigned char)(bytes[132]));  
+            (unsigned char)(bytes[135]) << 24 | 
+            (unsigned char)(bytes[136]) << 16 | 
+            (unsigned char)(bytes[137]) << 8 | 
+            (unsigned char)(bytes[138]));  
             delay(50);
 
         uint32_t FaultMessage3_value = int( 
-            (unsigned char)(bytes[133]) << 24 | 
-            (unsigned char)(bytes[134]) << 16 | 
-            (unsigned char)(bytes[135]) << 8 | 
-            (unsigned char)(bytes[136])); 
+            (unsigned char)(bytes[139]) << 24 | 
+            (unsigned char)(bytes[140]) << 16 | 
+            (unsigned char)(bytes[141]) << 8 | 
+            (unsigned char)(bytes[142])); 
             delay(50);
 
         uint32_t FaultMessage4_value = int( 
-            (unsigned char)(bytes[137]) << 24 | 
-            (unsigned char)(bytes[138]) << 16 | 
-            (unsigned char)(bytes[139]) << 8 | 
-            (unsigned char)(bytes[140]));
+            (unsigned char)(bytes[143]) << 24 | 
+            (unsigned char)(bytes[144]) << 16 | 
+            (unsigned char)(bytes[145]) << 8 | 
+            (unsigned char)(bytes[146]));
             delay(50);
 
         uint32_t FaultMessage5_value = int( 
-            (unsigned char)(bytes[141]) << 24 | 
-            (unsigned char)(bytes[142]) << 16 | 
-            (unsigned char)(bytes[143]) << 8 | 
-            (unsigned char)(bytes[144])); 
+            (unsigned char)(bytes[147]) << 24 | 
+            (unsigned char)(bytes[148]) << 16 | 
+            (unsigned char)(bytes[149]) << 8 | 
+            (unsigned char)(bytes[150])); 
             delay(50);
 
         uint32_t FaultMessage6_value = int( 
-            (unsigned char)(bytes[145]) << 24 | 
-            (unsigned char)(bytes[146]) << 16 | 
-            (unsigned char)(bytes[147]) << 8 | 
-            (unsigned char)(bytes[148]));
+            (unsigned char)(bytes[151]) << 24 | 
+            (unsigned char)(bytes[152]) << 16 | 
+            (unsigned char)(bytes[153]) << 8 | 
+            (unsigned char)(bytes[154]));
             delay(50);
 
         uint32_t FaultMessage7_value = int( 
-            (unsigned char)(bytes[149]) << 24 | 
-            (unsigned char)(bytes[150]) << 16 | 
-            (unsigned char)(bytes[151]) << 8 | 
-            (unsigned char)(bytes[152]));
+            (unsigned char)(bytes[155]) << 24 | 
+            (unsigned char)(bytes[156]) << 16 | 
+            (unsigned char)(bytes[157]) << 8 | 
+            (unsigned char)(bytes[158]));
             delay(50);
 
         uint32_t FaultMessage8_value = int( 
-            (unsigned char)(bytes[153]) << 24 | 
-            (unsigned char)(bytes[154]) << 16 | 
-            (unsigned char)(bytes[155]) << 8 | 
-            (unsigned char)(bytes[156]));
+            (unsigned char)(bytes[159]) << 24 | 
+            (unsigned char)(bytes[160]) << 16 | 
+            (unsigned char)(bytes[161]) << 8 | 
+            (unsigned char)(bytes[162]));
             delay(50);
 
         if(FaultMessage1_value != 0 || FaultMessage2_value != 0 || FaultMessage3_value != 0 || FaultMessage4_value != 0 || FaultMessage5_value != 0 || FaultMessage6_value != 0 || FaultMessage7_value != 0 || FaultMessage8_value != 0) {
